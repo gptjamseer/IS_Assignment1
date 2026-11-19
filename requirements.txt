@@ -1,0 +1,3 @@
+pygad>=3.9,<4
+matplotlib
+ipykernel
