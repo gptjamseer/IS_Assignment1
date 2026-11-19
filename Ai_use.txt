@@ -1,27 +1,27 @@
-과제별 AI 사용 질문 요약 (대화 원문이 아닌 요약)
+Summary of AI assistance requests by task (a summary, not a verbatim conversation transcript)
 
 Task 1
-- lab2.ipynb 예제보다 GA 설정이 많은 이유는 무엇이며, gene_space가 필요한가?
-- Task 1에서는 기본 범위만 지정하고 교사 자격, 강의실 운영시간과 충돌은 fitness가 검사하도록 수정해 달라.
+- Explain why there are more GA settings than in the lab2.ipynb example and whether gene_space is necessary.
+- Modify Task 1 to specify only the basic gene ranges and let the fitness function check teacher qualifications, classroom availability, and scheduling conflicts.
 
 Task 2
-- PDF의 개선·비교 요구사항을 설명하고 기존 함수를 재사용해 구현해 달라.
-- 초기 집단 생성과 random_assignment가 필요한가? 코드를 단순화하고 같은 초기 조건으로 비교해 달라.
-- run()을 줄이고 교차·변이 비교에 필요한 시간 측정만 유지해 달라.
+- Explain the PDF requirements for improvements and comparisons, and implement them by reusing existing functions.
+- Explain whether custom initial population generation and random_assignment are necessary. Simplify the code and compare the methods under the same initial conditions.
+- Simplify run() and retain only the timing measurements needed to compare crossover and mutation.
 
 Task 3
-- 교사 시간 선호도와 강의시간 균형이 무엇인지, 단일 fitness와 다목적 방식으로 어떻게 비교하는지 설명해 달라.
-- PDF 요구사항을 충족하도록 필요한 함수만 써서 완성해 달라.
+- Explain teacher time preferences and workload balance, and how to compare a single fitness function with multi-objective optimization.
+- Complete the implementation using only the functions needed to satisfy the PDF requirements.
 
 Task 4
-- PDF에서 요구하는 실험과 노트북 제출 내용을 분석해 달라.
-- 과제를 간단하게 완성하고, 각 과제에서 사용한 질문을 이 파일에 요약해 달라.
+- Analyze the experiments and notebook submission contents required by the PDF.
+- Complete the assignment with a simple implementation and summarize the AI assistance requests for each task in this file.
 
-공통
-- 공통 함수는 common.py로 분리하고 main.py에서 번호로 과제를 선택하도록 해 달라.
-- 메뉴를 반복하고 q/end/quit로 종료하도록 해 달라. 공통 시작·종료 문구는 유지하고 공통 시간 측정은 삭제해 달라.
+Shared code and execution
+- Move shared functions into common.py and allow tasks to be selected by number in main.py.
+- Repeat the menu until q, end, or quit is entered. Keep the shared start and end messages and remove the shared timing measurement.
 
-기존에 기록한 Task 1 요청 원문
+Previously recorded original request for Task 1
 
 Implement Task 1 in Task1.py using Python and PyGAD.
 

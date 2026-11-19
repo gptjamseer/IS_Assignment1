@@ -1,9 +1,10 @@
-"""Compare Task 1 with a GA that keeps each lecture's assignment together."""
+"""Run a GA that keeps each lecture's assignment together."""
 
 from time import perf_counter
 
 import numpy as np
 import common
+import Task1
 
 
 def crossover(parents, offspring_size, ga):
@@ -17,12 +18,28 @@ def crossover(parents, offspring_size, ga):
     return np.array(children)
 
 
+def lecture_errors(solution, index):
+    """Count only violations involving the lecture being changed."""
+    schedule = Task1.decode_solution(solution)
+    lecture = schedule[index]
+    errors = int(lecture["subject"].lower() not in common.TEACHERS[lecture["teacher"]])
+    room_start, room_end = common.CLASSROOMS[lecture["room"]]
+    errors += lecture["start"] < room_start or lecture["end"] > room_end
+    for other_index, other in enumerate(schedule):
+        if other_index != index and Task1.overlap(lecture, other):
+            errors += lecture["room"] == other["room"]
+            errors += lecture["teacher"] == other["teacher"]
+    return errors
+
+
 def mutation(children, ga):
     for child in children:
         gene = ga.python_random_generator.randrange(len(child))
         candidate = child.copy()
         candidate[gene] = ga.python_random_generator.choice(ga.gene_space[gene])
-        if common.fitness_function(ga, candidate, 0) >= common.fitness_function(ga, child, 0):
+        # Other lectures' violations are unchanged, so compare only this lecture.
+        lecture_index = gene // 3
+        if lecture_errors(candidate, lecture_index) <= lecture_errors(child, lecture_index):
             child[gene] = candidate[gene]
     return children
 
@@ -31,7 +48,7 @@ def run(label, **operators):
     # One timestamp per generation, at the end of each step.
     parents, crossed, mutated = [], [], []
     started = perf_counter()
-    ga = common.create_ga(
+    ga = Task1.create_ga(
         **operators,
         on_parents=lambda ga, _: parents.append(perf_counter()),
         on_crossover=lambda ga, _: crossed.append(perf_counter()),
@@ -48,10 +65,8 @@ def run(label, **operators):
     return history
 
 
-@common.task_output()
 def main():
     common.load_data()
-    run("Task 1")
     run("Task 2", crossover_type=crossover, mutation_type=mutation)
 
 

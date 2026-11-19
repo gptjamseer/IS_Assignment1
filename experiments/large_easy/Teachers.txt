@@ -1,6 +1,0 @@
-Anna [Programming, Math, Algorithms, Systems, Networks, Databases]
-Brian [Programming, Math, Algorithms, Systems, Networks, Databases]
-Charles [Programming, Math, Algorithms, Systems, Networks, Databases]
-Diana [Programming, Math, Algorithms, Systems, Networks, Databases]
-Eva [Programming, Math, Algorithms, Systems, Networks, Databases]
-Felix [Programming, Math, Algorithms, Systems, Networks, Databases]
